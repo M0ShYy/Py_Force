@@ -5,7 +5,7 @@ global info, target, usernames, passwords, port
 # Options
 options = "hu:p:t:w:"
 # Long options
-long_options = ["help", "user_file =", "pass_file =", "target =", "word_list ="]
+long_options = ["help", "user_file =", "port =", "target =", "word_list ="]
 ssh = paramiko.SSHClient()
 
 
@@ -22,12 +22,12 @@ def main(argumentlist):
                 infos()                                     # print help
             elif currentArgument in ("-u", "--user_file "):    # test if there is -o --output
                 usernames = open(currentValue, "r")
-            elif currentArgument in ("-p", "--pass_file "):
+            elif currentArgument in ("-w", "--word_list "):
                 passwords = open(currentValue, "r")
             elif currentArgument in ("-t", "--target "):
                 target = currentValue
-            elif currentArgument in ("-w", "--word_list"):
-                passwords = currentValue
+            elif currentArgument in ("-p", "--port"):
+                port = int(currentValue)
             else:
                 print(infos())
         if not info:                                        # if the help was not printed then
@@ -46,16 +46,18 @@ def infos():
     print("Keylogger.py\n"
           "OPTION\n"
           "-h   --help      <Show this page>\n"
-          "-o   --output    <output-directory>\n"
+          "-u   --user_list    <output-directory>\n"
+          "-p   --port\n"
+          "-w   --word_list\n"
+          "-t   --target\n"
           "\n"
           "EXAMPLES:\n"
-          "Keylogger.py -o C:\\Users\Admin\Documents\logs \n"
-          "Keylogger.py -h\n"
           "\n"
-          "SEE THE MAN PAGE https://github.com/M0ShYy/PyKeylogger FOR MORE OPTIONS AND EXAMPLES\n")
+          "\n"
+          "\n"
+          "SEE THE MAN PAGE https://github.com/M0ShYy/Py_Force FOR MORE OPTIONS AND EXAMPLES\n")
+
 
 argumentList = (sys.argv[1:])                               # make a list of all the option wrote by the user
 main(argumentList)
-
-
 
