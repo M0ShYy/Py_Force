@@ -33,7 +33,7 @@ def connexion(password, user, port, target):
     except paramiko.SSHException:
         print(f"{BLUE}[*] Quota exceeded, retrying with delay...{RESET}")
         # sleep for a minute
-        time.sleep(60)
+        time.sleep(2)
         return connexion(password, user, port, target)
     else:
         # connection was established successfully
@@ -93,7 +93,7 @@ def infos():
 main(argumentList)"""
 
 if __name__ == '__main__':
-    argument = "-u lucas -w pass.txt -p 22 -t 127.0.0.1"
+    argument = "-u admin -w rockyou.txt -p 22 -t 127.0.0.1"
     argumentList = (argument.split())
     print(argumentList)
     main(argumentList)
